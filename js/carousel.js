@@ -1,1 +1,0 @@
-if(typeof Swiper!=='undefined'){const cfg={loop:true,slidesPerView:1,pagination:{el:'.swiper-pagination',clickable:true},autoplay:{delay:3000}};new Swiper('.mySwiper1',cfg);new Swiper('.mySwiper2',cfg);new Swiper('.mySwiper3',cfg);}

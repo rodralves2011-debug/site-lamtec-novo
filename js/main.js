@@ -1,1 +1,1 @@
-document.addEventListener('DOMContentLoaded', function(){document.querySelectorAll('nav a').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const id=this.getAttribute('href');const el=document.querySelector(id);if(el) el.scrollIntoView({behavior:'smooth'});});});});
+console.log('LAMTEC site');
