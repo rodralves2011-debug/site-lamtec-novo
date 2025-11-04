@@ -186,34 +186,44 @@ img {
 }
 
 /* ==================== HERO ==================== */
-/* ==================== HERO (COM NOVO FUNDO) ==================== */
 .hero {
-    /* Aplicando a nova imagem de fundo */
-    background-image: url('../assets/img/hero-background-v2.jpg'); /* Certifique-se que essa imagem está na pasta assets/img */
-    background-size: cover;
-    background-position: center;
+    background-image: url('../assets/img/hero-background-v2.jpg'); 
+    background-size: cover; /* Continua cobrindo toda a área */
+    background-position: right center; /* AGORA: Alinha a imagem à direita e centraliza verticalmente */
     background-repeat: no-repeat;
-    
-    color: var(--text-color-light); /* Texto fica branco */
+
+    color: var(--text-color-light); 
     padding-top: calc(var(--header-height) + 3rem);
-    min-height: 80vh; /* Altura mínima para a imagem aparecer */
+    min-height: 80vh; 
+
+    /* Adicionado para garantir que o conteúdo fique à esquerda */
+    display: flex; /* Habilita o flexbox */
+    align-items: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: flex-start; /* ALINHA O CONTEÚDO À ESQUERDA */
+    position: relative; /* Para usar z-index e posicionamento se necessário */
 }
 
+/* O container principal da seção hero */
 .hero-container {
-    grid-template-columns: 1fr; /* Força uma coluna única */
-    align-items: center;
+    grid-template-columns: 1fr; /* Mantém uma coluna */
     gap: 3rem;
-    max-width: 600px; /* Limita a largura do conteúdo de texto */
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem; /* Pequeno espaçamento da borda */
-    padding-right: 1rem; /* Pequeno espaçamento da borda */
+    padding-left: 10%; /* Empurra o conteúdo para a esquerda, longe do logo */
+    padding-right: 1rem; /* Mantém um pequeno espaçamento da direita */
+    max-width: 600px; /* Limita a largura do texto para não cobrir o logo */
+    margin-left: 0; /* Remove a margem automática da esquerda para forçar o alinhamento */
+    margin-right: auto; /* Mantém a margem automática da direita */
+
+    /* Removido o display:flex e align-items:center daqui, já que o .hero já faz isso */
+    /* display: flex;  */
+    /* align-items: center; */
 }
 
-/* Centraliza o bloco de texto */
+/* Onde está o texto e botões */
 .hero-data {
-    text-align: center;
+    text-align: left; /* Alinha o texto à esquerda */
     z-index: 10;
+    /* Removido max-width, pois o hero-container já faz isso */
+    /* max-width: 500px; */ 
 }
 
 .hero-title {
@@ -221,32 +231,32 @@ img {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: #FFFFFF; /* Garante que o título é branco */
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Sombra para legibilidade */
+    color: #FFFFFF; 
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); 
 }
 
 .hero-description {
     font-size: var(--normal-font-size);
     margin-bottom: 2.5rem;
     line-height: 1.6;
-    color: #f0f0f0; /* Garante que a descrição é clara */
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Sombra para legibilidade */
+    color: #f0f0f0; 
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: center; /* Centraliza os botões */
+    justify-content: flex-start; /* ALINHA OS BOTÕES À ESQUERDA */
 }
 
-/* ESCONDE O CÍRCULO AZUL ANTIGO */
+/* Esconde o círculo azul antigo */
 .hero-image {
     display: none; 
 }
 
-/* Ajusta botões para o novo fundo */
+/* Estilos dos botões (não mudou, mas inclui para referência) */
 .hero .button-primary {
-    background-color: #25D366; /* Cor do WhatsApp */
+    background-color: #25D366; 
     color: white;
 }
 .hero .button-primary:hover {
@@ -260,23 +270,34 @@ img {
 }
 .hero .button-outline:hover {
     background-color: var(--text-color-light);
-    color: var(--hero-bg-color); /* Texto fica escuro no hover */
+    color: var(--hero-bg-color); 
 }
+/* ==================== RESPONSIVIDADE PARA O HERO (Adicionado) ==================== */
 
-/* Placeholder para o gráfico L.A.M.TEC */
-.hero-graphic-placeholder {
-    width: 350px;
-    height: 350px;
-    border-radius: 50%;
-    border: 5px solid var(--primary-color);
-    box-shadow: 0 0 30px var(--primary-color-alt);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text-color-light);
-    background-color: rgba(0, 82, 204, 0.1);
+@media screen and (max-width: 768px) {
+    .hero {
+        background-position: center bottom; /* No mobile, joga o logo para baixo e centraliza */
+        min-height: 70vh; /* Ajuste a altura para mobile */
+        padding-top: calc(var(--header-height) + 1rem);
+        justify-content: center; /* Centraliza o conteúdo no mobile */
+        text-align: center; /* Centraliza o texto no mobile */
+    }
+
+    .hero-container {
+        padding-left: 1rem; /* Reduz o padding lateral no mobile */
+        padding-right: 1rem;
+        max-width: 100%; /* Ocupa a largura total */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-data {
+        text-align: center; /* Centraliza o texto no mobile */
+    }
+
+    .hero-buttons {
+        justify-content: center; /* Centraliza os botões no mobile */
+    }
 }
 
 /* ==================== SERVIÇOS ==================== */
