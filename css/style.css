@@ -190,10 +190,10 @@ img {
     background-image: url('../assets/img/hero-background-v2.jpg'); 
     
     /* AJUSTE FINAL DO LOGO:
-    Vamos usar 85% da esquerda e 50% (centro) do topo.
-    Isso deve puxar o logo para a esquerda o suficiente para ele aparecer.
+    Vamos usar 95% 50%. Isso deve puxar a imagem 
+    ainda mais para a esquerda, revelando o logo na direita.
     */
-    background-position: 85% 50%; 
+    background-position: 95% 50%; 
     
     background-size: cover;
     background-repeat: no-repeat;
@@ -217,12 +217,15 @@ img {
     max-width: 550px; /* Limita a largura do texto */
     margin-left: 0; 
     margin-right: auto;
+    /* Remove o text-align: center que estava vindo do mobile */
+    text-align: left; 
 }
 
 /* Onde está o texto e botões */
 .hero-data {
     text-align: left; /* Garante alinhamento à esquerda */
     z-index: 10;
+    order: 1; /* Garante que o texto venha primeiro */
 }
 
 .hero-title {
