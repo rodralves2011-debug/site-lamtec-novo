@@ -275,38 +275,6 @@ img {
     border-color: #1a3a5a;
 }
 
-/* ==================== RESPONSIVIDADE PARA O HERO (Mobile) ==================== */
-
-    .hero {
-        background-position: center center; /* Centraliza a imagem no mobile */
-        min-height: 70vh; 
-        padding-top: calc(var(--header-height) + 1rem);
-        justify-content: center; /* Centraliza o conteúdo */
-    }
-
-    .hero-container {
-        grid-template-columns: 1fr;
-        padding-left: 1rem; 
-        padding-right: 1rem;
-        max-width: 100%; 
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center; /* Garante que o container antigo centralize */
-    }
-
-    .hero-data {
-        order: 1; /* Garante que o texto venha primeiro */
-        text-align: center; 
-    }
-    
-    .hero-image {
-        display: none; /* Garante que está escondido no mobile também */
-    }
-
-    .hero-buttons {
-        justify-content: center; /* Centraliza os botões no mobile */
-    }
-
 /* ==================== SERVIÇOS ==================== */
 .services {
     background-color: var(--light-bg-color);
