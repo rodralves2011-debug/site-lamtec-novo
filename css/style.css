@@ -186,17 +186,34 @@ img {
 }
 
 /* ==================== HERO ==================== */
+/* ==================== HERO (COM NOVO FUNDO) ==================== */
 .hero {
-    background-color: var(--hero-bg-color);
-    color: var(--text-color-light);
-    padding-top: calc(var(--header-height) + 3rem); /* Empurra abaixo do header */
-    min-height: 80vh;
+    /* Aplicando a nova imagem de fundo */
+    background-image: url('../assets/img/hero-background-v2.jpg'); /* Certifique-se que essa imagem está na pasta assets/img */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    color: var(--text-color-light); /* Texto fica branco */
+    padding-top: calc(var(--header-height) + 3rem);
+    min-height: 80vh; /* Altura mínima para a imagem aparecer */
 }
 
 .hero-container {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* Força uma coluna única */
     align-items: center;
     gap: 3rem;
+    max-width: 600px; /* Limita a largura do conteúdo de texto */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* Pequeno espaçamento da borda */
+    padding-right: 1rem; /* Pequeno espaçamento da borda */
+}
+
+/* Centraliza o bloco de texto */
+.hero-data {
+    text-align: center;
+    z-index: 10;
 }
 
 .hero-title {
@@ -204,24 +221,46 @@ img {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    color: #FFFFFF; /* Garante que o título é branco */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); /* Sombra para legibilidade */
 }
 
 .hero-description {
     font-size: var(--normal-font-size);
     margin-bottom: 2.5rem;
     line-height: 1.6;
-    max-width: 500px;
+    color: #f0f0f0; /* Garante que a descrição é clara */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Sombra para legibilidade */
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center; /* Centraliza os botões */
 }
 
+/* ESCONDE O CÍRCULO AZUL ANTIGO */
 .hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: none; 
+}
+
+/* Ajusta botões para o novo fundo */
+.hero .button-primary {
+    background-color: #25D366; /* Cor do WhatsApp */
+    color: white;
+}
+.hero .button-primary:hover {
+    background-color: #1DA851; 
+}
+
+.hero .button-outline {
+    background-color: transparent;
+    color: var(--text-color-light);
+    border: 2px solid var(--text-color-light);
+}
+.hero .button-outline:hover {
+    background-color: var(--text-color-light);
+    color: var(--hero-bg-color); /* Texto fica escuro no hover */
 }
 
 /* Placeholder para o gráfico L.A.M.TEC */
