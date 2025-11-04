@@ -188,46 +188,46 @@ img {
 /* ==================== HERO ==================== */
 .hero {
     background-image: url('../assets/img/hero-background-v2.jpg'); 
-    background-size: cover; /* Continua cobrindo toda a área */
-    background-position: right center; /* AGORA: Alinha a imagem à direita e centraliza verticalmente */
+    
+    /* AJUSTE PRINCIPAL DO LOGO:
+    Vamos usar "right 10% center". Isso força a imagem a se alinhar
+    a 10% da borda DIREITA e ficar centralizada verticalmente.
+    Isso DEVE trazer o logo para a tela.
+    */
+    background-position: right 10% center;
+    
+    background-size: cover;
     background-repeat: no-repeat;
-
+    
     color: var(--text-color-light); 
     padding-top: calc(var(--header-height) + 3rem);
     min-height: 80vh; 
-
-    /* Adicionado para garantir que o conteúdo fique à esquerda */
-    display: flex; /* Habilita o flexbox */
-    align-items: center; /* Centraliza o conteúdo verticalmente */
-    justify-content: flex-start; /* ALINHA O CONTEÚDO À ESQUERDA */
-    position: relative; /* Para usar z-index e posicionamento se necessário */
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
 }
 
 /* O container principal da seção hero */
 .hero-container {
-    grid-template-columns: 1fr; /* Mantém uma coluna */
+    grid-template-columns: 1fr; 
     gap: 3rem;
-    padding-left: 10%; /* Empurra o conteúdo para a esquerda, longe do logo */
-    padding-right: 1rem; /* Mantém um pequeno espaçamento da direita */
-    max-width: 600px; /* Limita a largura do texto para não cobrir o logo */
-    margin-left: 0; /* Remove a margem automática da esquerda para forçar o alinhamento */
-    margin-right: auto; /* Mantém a margem automática da direita */
-
-    /* Removido o display:flex e align-items:center daqui, já que o .hero já faz isso */
-    /* display: flex;  */
-    /* align-items: center; */
+    padding-left: 10%; 
+    padding-right: 1rem; 
+    max-width: 550px; 
+    margin-left: 0; 
+    margin-right: auto;
 }
 
 /* Onde está o texto e botões */
 .hero-data {
-    text-align: left; /* Alinha o texto à esquerda */
+    text-align: left; 
     z-index: 10;
-    /* Removido max-width, pois o hero-container já faz isso */
-    /* max-width: 500px; */ 
 }
 
 .hero-title {
-    font-size: var(--title-font-size);
+    /* AJUSTE DA FONTE: Aumentando o tamanho */
+    font-size: 3rem; /* Era var(--title-font-size) que é 2.5rem */
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
@@ -236,7 +236,8 @@ img {
 }
 
 .hero-description {
-    font-size: var(--normal-font-size);
+    /* AJUSTE DA FONTE: Aumentando o tamanho */
+    font-size: 1.1rem; /* Era var(--normal-font-size) que é 1rem */
     margin-bottom: 2.5rem;
     line-height: 1.6;
     color: #f0f0f0; 
@@ -246,59 +247,65 @@ img {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start; /* ALINHA OS BOTÕES À ESQUERDA */
+    justify-content: flex-start; 
 }
 
-/* Esconde o círculo azul antigo */
+/* ESCONDE O CÍRCULO AZUL ANTIGO */
 .hero-image {
     display: none; 
 }
 
-/* Estilos dos botões (não mudou, mas inclui para referência) */
+/* --- AJUSTES DOS BOTÕES (Estão corretos) --- */
 .hero .button-primary {
     background-color: #25D366; 
     color: white;
+    border: 2px solid #25D366;
 }
 .hero .button-primary:hover {
     background-color: #1DA851; 
+    border-color: #1DA851;
 }
-
 .hero .button-outline {
-    background-color: transparent;
+    background-color: #0d1b2a; 
     color: var(--text-color-light);
-    border: 2px solid var(--text-color-light);
+    border: 2px solid #0d1b2a; 
 }
 .hero .button-outline:hover {
-    background-color: var(--text-color-light);
-    color: var(--hero-bg-color); 
+    background-color: #1a3a5a; 
+    border-color: #1a3a5a;
 }
-/* ==================== RESPONSIVIDADE PARA O HERO (Adicionado) ==================== */
 
-@media screen and (max-width: 768px) {
+/* ==================== RESPONSIVIDADE PARA O HERO (Mobile) ==================== */
+
     .hero {
-        background-position: center bottom; /* No mobile, joga o logo para baixo e centraliza */
-        min-height: 70vh; /* Ajuste a altura para mobile */
+        background-position: center center; /* Centraliza a imagem no mobile */
+        min-height: 70vh; 
         padding-top: calc(var(--header-height) + 1rem);
-        justify-content: center; /* Centraliza o conteúdo no mobile */
-        text-align: center; /* Centraliza o texto no mobile */
+        justify-content: center; /* Centraliza o conteúdo */
     }
 
     .hero-container {
-        padding-left: 1rem; /* Reduz o padding lateral no mobile */
+        grid-template-columns: 1fr;
+        padding-left: 1rem; 
         padding-right: 1rem;
-        max-width: 100%; /* Ocupa a largura total */
+        max-width: 100%; 
         margin-left: auto;
         margin-right: auto;
+        text-align: center; /* Garante que o container antigo centralize */
     }
 
     .hero-data {
-        text-align: center; /* Centraliza o texto no mobile */
+        order: 1; /* Garante que o texto venha primeiro */
+        text-align: center; 
+    }
+    
+    .hero-image {
+        display: none; /* Garante que está escondido no mobile também */
     }
 
     .hero-buttons {
         justify-content: center; /* Centraliza os botões no mobile */
     }
-}
 
 /* ==================== SERVIÇOS ==================== */
 .services {
