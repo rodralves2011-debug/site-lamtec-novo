@@ -188,31 +188,24 @@ img {
 /* ==================== HERO ==================== */
 .hero {
     background-image: url('../assets/img/hero-background-v2.jpg'); 
-    
-    /* AJUSTE FINAL DO LOGO: 
-       Posiciona 90% da esquerda e 50% (centro) do topo. 
-       Isso deve deixar o logo perfeitamente visível na direita.
-    */
-    background-position: 90% 50%; 
-    
-    background-size: cover; /* USA "cover" PARA PREENCHER TUDO */
+    background-position: center center; /* A imagem já tem o logo na posição certa, então centralizamos o background */
+    background-size: cover; /* Garante que a imagem preencha toda a área */
     background-repeat: no-repeat;
-    
+
     color: var(--text-color-light); 
     padding-top: calc(var(--header-height) + 3rem);
     min-height: 80vh; 
-    
-    /* GARANTE O ALINHAMENTO À ESQUERDA (TEXTO E BOTÕES) */
+
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; 
+    justify-content: flex-start; /* Alinha o conteúdo (texto e botões) à esquerda */
 }
 
 /* O container principal da seção hero */
 .hero-container {
     grid-template-columns: 1fr; 
     gap: 3rem;
-    padding-left: 10%; /* Empurra o conteúdo para a esquerda, longe do logo */
+    padding-left: 10%; /* Empurra o conteúdo para a esquerda */
     padding-right: 1rem; 
     max-width: 550px; /* Limita a largura do texto */
     margin-left: 0; 
@@ -222,13 +215,12 @@ img {
 
 /* Onde está o texto e botões */
 .hero-data {
-    text-align: left; /* Garante alinhamento à esquerda */
+    text-align: left; 
     z-index: 10;
     order: 1;
 }
 
 .hero-title {
-    /* Fontes maiores */
     font-size: 3rem; 
     font-weight: 700;
     line-height: 1.2;
@@ -238,7 +230,6 @@ img {
 }
 
 .hero-description {
-    /* Fontes maiores */
     font-size: 1.1rem; 
     margin-bottom: 2.5rem;
     line-height: 1.6;
@@ -249,7 +240,7 @@ img {
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start; /* Garante alinhamento à esquerda */
+    justify-content: flex-start; 
 }
 
 /* ESCONDE O CÍRCULO AZUL ANTIGO QUE NÃO USAMOS MAIS */
