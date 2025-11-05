@@ -188,35 +188,49 @@ img {
 /* ==================== HERO ==================== */
 .hero {
     background-image: url('../assets/img/hero-background-v2.jpg'); 
-    background-position: center center; /* A imagem já tem o logo na posição certa, então centralizamos o background */
-    background-size: cover; /* Garante que a imagem preencha toda a área */
+    background-position: center right; /* Ajustado para garantir que o logo da imagem fique à direita */
+    background-size: cover; /* Garante que a imagem preencha toda a área, cortando se necessário */
     background-repeat: no-repeat;
 
     color: var(--text-color-light); 
     padding-top: calc(var(--header-height) + 3rem);
-    min-height: 80vh; 
+    min-height: 80vh; /* Altura mínima da seção (pode ser ajustada) */
 
     display: flex; 
     align-items: center; 
     justify-content: flex-start; /* Alinha o conteúdo (texto e botões) à esquerda */
+    position: relative; /* Necessário para o pseudo-elemento */
 }
 
-/* O container principal da seção hero */
+/* Opcional: Efeito de gradiente para melhorar contraste do texto à esquerda */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%; /* Ajuste a largura da área escura */
+    height: 100%;
+    background: linear-gradient(90deg, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.6) 70%, transparent 100%);
+    z-index: 1; /* Garante que o gradiente fique abaixo do texto */
+}
+
+/* Conteúdo textual */
 .hero-container {
+    position: relative; /* Z-index para o texto ficar acima do gradiente */
+    z-index: 2;
     grid-template-columns: 1fr; 
     gap: 3rem;
-    padding-left: 10%; /* Empurra o conteúdo para a esquerda */
-    padding-right: 1rem; 
-    max-width: 550px; /* Limita a largura do texto */
+    padding-left: 8%; /* Empurra o conteúdo para a esquerda */
+    padding-right: 2rem; 
+    max-width: 650px; /* Limita a largura do texto para não cobrir o logo */
     margin-left: 0; 
     margin-right: auto;
-    text-align: left; /* Garante que o texto não centralize */
+    text-align: left; 
 }
 
 /* Onde está o texto e botões */
 .hero-data {
     text-align: left; 
-    z-index: 10;
     order: 1;
 }
 
@@ -268,6 +282,42 @@ img {
     border-color: #1a3a5a;
 }
 
+/* ==================== RESPONSIVIDADE PARA O HERO (AJUSTES FINOS) ==================== */
+@media screen and (max-width: 1024px) { /* Para telas menores que desktop padrão */
+    .hero-container {
+        padding-left: 5%; /* Reduz o padding para dar mais espaço */
+        max-width: 500px; /* Ajusta a largura máxima do texto */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        background-position: center center; /* Centraliza o logo no mobile */
+        min-height: 70vh; /* Altura menor para mobile */
+        justify-content: center; /* Centraliza o conteúdo no mobile */
+        text-align: center;
+    }
+    .hero::before { /* Remove o gradiente no mobile para não atrapalhar */
+        display: none;
+    }
+    .hero-container {
+        padding-left: 1rem; /* Padding padrão */
+        padding-right: 1rem;
+        max-width: 100%; /* Ocupa a largura total */
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center; /* Centraliza o texto no mobile */
+    }
+    .hero-title {
+        font-size: 2.5rem; /* Fonte um pouco menor no mobile */
+    }
+    .hero-description {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        justify-content: center; /* Centraliza os botões no mobile */
+    }
+}
 /* ==================== SERVIÇOS ==================== */
 .services {
     background-color: var(--light-bg-color);
