@@ -188,21 +188,23 @@ img {
 /* ==================== HERO ==================== */
 .hero {
     background-image: url('../assets/img/hero-background-v2.jpg'); 
-    background-position: center right; /* Ajustado para garantir que o logo da imagem fique à direita */
-    background-size: cover; /* Garante que a imagem preencha toda a área, cortando se necessário */
+    background-size: cover; /* Garante que a imagem preencha toda a área */
     background-repeat: no-repeat;
-
+    
+    /* Posição padrão para telas maiores: Alinha o logo mais para a direita, dando espaço ao texto */
+    background-position: 90% center; /* Ajustado para 90% da esquerda e centralizado verticalmente */
+    
     color: var(--text-color-light); 
     padding-top: calc(var(--header-height) + 3rem);
-    min-height: 80vh; /* Altura mínima da seção (pode ser ajustada) */
-
+    min-height: 85vh; /* Aumenta um pouco a altura mínima para garantir espaço */
+    
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Alinha o conteúdo (texto e botões) à esquerda */
-    position: relative; /* Necessário para o pseudo-elemento */
+    justify-content: flex-start; 
+    position: relative; 
 }
 
-/* Opcional: Efeito de gradiente para melhorar contraste do texto à esquerda */
+/* Efeito de gradiente para melhorar contraste do texto à esquerda (fica abaixo do texto) */
 .hero::before {
     content: "";
     position: absolute;
@@ -211,7 +213,7 @@ img {
     width: 60%; /* Ajuste a largura da área escura */
     height: 100%;
     background: linear-gradient(90deg, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.6) 70%, transparent 100%);
-    z-index: 1; /* Garante que o gradiente fique abaixo do texto */
+    z-index: 1; 
 }
 
 /* Conteúdo textual */
@@ -283,40 +285,78 @@ img {
 }
 
 /* ==================== RESPONSIVIDADE PARA O HERO (AJUSTES FINOS) ==================== */
-@media screen and (max-width: 1024px) { /* Para telas menores que desktop padrão */
+
+/* Para telas de notebook menores (ex: 1366px - 1025px) */
+@media screen and (max-width: 1366px) { 
+    .hero {
+        min-height: 80vh; /* Ajusta a altura */
+        background-position: 85% center; /* Move a imagem um pouco mais para a esquerda */
+    }
     .hero-container {
-        padding-left: 5%; /* Reduz o padding para dar mais espaço */
-        max-width: 500px; /* Ajusta a largura máxima do texto */
+        padding-left: 5%; 
+        max-width: 580px;
     }
 }
 
-@media screen and (max-width: 768px) {
+/* Para tablets e telas menores (ex: 1024px - 769px) */
+@media screen and (max-width: 1024px) { 
     .hero {
-        background-position: center center; /* Centraliza o logo no mobile */
-        min-height: 70vh; /* Altura menor para mobile */
-        justify-content: center; /* Centraliza o conteúdo no mobile */
-        text-align: center;
-    }
-    .hero::before { /* Remove o gradiente no mobile para não atrapalhar */
-        display: none;
+        min-height: 75vh;
+        background-position: 80% center; /* Move mais ainda para a esquerda */
     }
     .hero-container {
-        padding-left: 1rem; /* Padding padrão */
-        padding-right: 1rem;
-        max-width: 100%; /* Ocupa a largura total */
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center; /* Centraliza o texto no mobile */
+        padding-left: 3%; 
+        max-width: 500px; 
     }
     .hero-title {
-        font-size: 2.5rem; /* Fonte um pouco menor no mobile */
+        font-size: 2.8rem; 
     }
     .hero-description {
         font-size: 1rem;
     }
-    .hero-buttons {
-        justify-content: center; /* Centraliza os botões no mobile */
+}
+
+/* Para Mobile (telas <= 768px) */
+@media screen and (max-width: 768px) {
+    .hero {
+        background-position: center center; /* Centraliza a imagem no mobile */
+        min-height: 70vh; 
+        padding-top: calc(var(--header-height) + 1rem);
+        justify-content: center; 
+        text-align: center;
     }
+    .hero::before { /* Remove o gradiente no mobile */
+        display: none;
+    }
+    .hero-container {
+        padding-left: 1rem; 
+        padding-right: 1rem;
+        max-width: 100%; 
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center; 
+    }
+    .hero-title {
+        font-size: 2.2rem; 
+    }
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    .hero-buttons {
+        justify-content: center; 
+    }
+}
+
+/* Para Mobile muito pequenos (ex: 375px) */
+@media screen and (max-width: 480px) {
+    .hero {
+        min-height: 60vh;
+        background-position: 70% center; /* Ajusta para telas muito estreitas */
+    }
+    .hero-title {
+        font-size: 1.8rem; 
+    }
+}
 }
 /* ==================== SERVIÇOS ==================== */
 .services {
