@@ -185,179 +185,102 @@ img {
     cursor: pointer;
 }
 
-/* ==================== HERO ==================== */
+/* ==================== HERO (MÉTODO CORRETO E RESPONSIVO) ==================== */
 .hero {
-    background-image: url('../assets/img/hero-background-v2.jpg'); 
-    background-size: cover; /* Garante que a imagem preencha toda a área */
+    /* 1. O Fundo Decorativo NOVO */
+    background-image: url('../assets/img/hero-background-decor.jpg');
+    background-position: center center;
+    background-size: cover; /* Agora isso é seguro, pois é só decoração */
     background-repeat: no-repeat;
     
-    /* Posição padrão para telas maiores: Alinha o logo mais para a direita, dando espaço ao texto */
-    background-position: 90% center; /* Ajustado para 90% da esquerda e centralizado verticalmente */
-    
-    color: var(--text-color-light); 
+    color: var(--text-color-light);
     padding-top: calc(var(--header-height) + 3rem);
-    min-height: 85vh; /* Aumenta um pouco a altura mínima para garantir espaço */
-    
-    display: flex; 
-    align-items: center; 
-    justify-content: flex-start; 
-    position: relative; 
+    min-height: 90vh; 
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
-/* Efeito de gradiente para melhorar contraste do texto à esquerda (fica abaixo do texto) */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60%; /* Ajuste a largura da área escura */
-    height: 100%;
-    background: linear-gradient(90deg, rgba(13,27,42,0.95) 0%, rgba(13,27,42,0.6) 70%, transparent 100%);
-    z-index: 1; 
-}
-
-/* Conteúdo textual */
+/* 2. O Layout de 2 Colunas (Texto | Imagem) */
 .hero-container {
-    position: relative; /* Z-index para o texto ficar acima do gradiente */
-    z-index: 2;
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr 1fr; /* 2 colunas de tamanho igual */
+    align-items: center;
     gap: 3rem;
-    padding-left: 8%; /* Empurra o conteúdo para a esquerda */
-    padding-right: 2rem; 
-    max-width: 650px; /* Limita a largura do texto para não cobrir o logo */
-    margin-left: 0; 
+    
+    /* Remove padding/margins extras que forçavam o alinhamento */
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem;
+    max-width: var(--container-width); /* Usa a largura total do container */
+    margin-left: auto;
     margin-right: auto;
-    text-align: left; 
 }
 
-/* Onde está o texto e botões */
+/* 3. O Bloco de Texto (Esquerda) */
 .hero-data {
-    text-align: left; 
-    order: 1;
+    text-align: left;
+    z-index: 10;
 }
 
 .hero-title {
-    font-size: 3rem; 
+    font-size: 3rem; /* Fonte grande */
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    color: #FFFFFF; 
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7); 
+    color: #FFFFFF;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
 }
 
 .hero-description {
-    font-size: 1.1rem; 
+    font-size: 1.1rem; /* Fonte grande */
     margin-bottom: 2.5rem;
     line-height: 1.6;
-    color: #f0f0f0; 
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); 
+    color: #f0f0f0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
-/* ESCONDE O CÍRCULO AZUL ANTIGO QUE NÃO USAMOS MAIS */
+/* 4. O Bloco do Logo (Direita) */
 .hero-image {
-    display: none; 
+    display: flex; /* Garante que a imagem fique visível */
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+
+.hero-logo-img {
+    max-width: 450px; /* Define um tamanho máximo para o logo */
+    width: 100%;
+    height: auto;
+    /* Efeito sutil de "brilho" para o logo */
+    filter: drop-shadow(0 0 15px rgba(100, 150, 255, 0.3));
 }
 
 /* --- ESTILO DOS BOTÕES (Corretos) --- */
 .hero .button-primary {
-    background-color: #25D366; 
+    background-color: #25D366;
     color: white;
     border: 2px solid #25D366;
 }
 .hero .button-primary:hover {
-    background-color: #1DA851; 
+    background-color: #1DA851;
     border-color: #1DA851;
 }
 .hero .button-outline {
-    background-color: #0d1b2a; 
+    background-color: #0d1b2a;
     color: var(--text-color-light);
-    border: 2px solid #0d1b2a; 
+    border: 2px solid #0d1b2a;
 }
 .hero .button-outline:hover {
-    background-color: #1a3a5a; 
+    background-color: #1a3a5a;
     border-color: #1a3a5a;
 }
 
-/* ==================== RESPONSIVIDADE PARA O HERO (AJUSTES FINOS) ==================== */
 
-/* Para telas de notebook menores (ex: 1366px - 1025px) */
-@media screen and (max-width: 1366px) { 
-    .hero {
-        min-height: 80vh; /* Ajusta a altura */
-        background-position: 85% center; /* Move a imagem um pouco mais para a esquerda */
-    }
-    .hero-container {
-        padding-left: 5%; 
-        max-width: 580px;
-    }
-}
-
-/* Para tablets e telas menores (ex: 1024px - 769px) */
-@media screen and (max-width: 1024px) { 
-    .hero {
-        min-height: 75vh;
-        background-position: 80% center; /* Move mais ainda para a esquerda */
-    }
-    .hero-container {
-        padding-left: 3%; 
-        max-width: 500px; 
-    }
-    .hero-title {
-        font-size: 2.8rem; 
-    }
-    .hero-description {
-        font-size: 1rem;
-    }
-}
-
-/* Para Mobile (telas <= 768px) */
-@media screen and (max-width: 768px) {
-    .hero {
-        background-position: center center; /* Centraliza a imagem no mobile */
-        min-height: 70vh; 
-        padding-top: calc(var(--header-height) + 1rem);
-        justify-content: center; 
-        text-align: center;
-    }
-    .hero::before { /* Remove o gradiente no mobile */
-        display: none;
-    }
-    .hero-container {
-        padding-left: 1rem; 
-        padding-right: 1rem;
-        max-width: 100%; 
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center; 
-    }
-    .hero-title {
-        font-size: 2.2rem; 
-    }
-    .hero-description {
-        font-size: 0.95rem;
-    }
-    .hero-buttons {
-        justify-content: center; 
-    }
-}
-
-/* Para Mobile muito pequenos (ex: 375px) */
-@media screen and (max-width: 480px) {
-    .hero {
-        min-height: 60vh;
-        background-position: 70% center; /* Ajusta para telas muito estreitas */
-    }
-    .hero-title {
-        font-size: 1.8rem; 
-    }
-}
-}
 /* ==================== SERVIÇOS ==================== */
 .services {
     background-color: var(--light-bg-color);
@@ -599,11 +522,37 @@ textarea.contact-input {
         display: none; /* Oculta ícones sociais do header no mobile */
     }
 
-    /* Ajustes das Seções */
+    /* ================ Hero Mobile (Stacking) ================ */
     .hero {
         padding-top: calc(var(--header-height) + 1rem);
+        min-height: 70vh;
     }
     
+    .hero-container {
+        grid-template-columns: 1fr; /* 1 coluna: empilha o conteúdo */
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-data {
+        order: 2; /* Texto vem DEPOIS da imagem */
+        text-align: center;
+    }
+    
+    .hero-image {
+        order: 1; /* Imagem vem PRIMEIRO */
+        margin-bottom: 0;
+    }
+
+    .hero-logo-img {
+        max-width: 300px; /* Logo menor no celular */
+    }
+    
+    .hero-buttons {
+        justify-content: center; /* Centraliza os botões */
+    }
+    /* ================ Fim do Hero Mobile ================ */
+
 
     .services-container {
         grid-template-columns: 1fr;
